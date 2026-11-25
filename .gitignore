@@ -1,0 +1,26 @@
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Python virtual environments & bytecode
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# CLI output & logs
+results/
+*.log
+
+# Playwright session files (if ever placed in repo)
+.bkind-playwright/
+storage_state.json
+
+# OS & editor files
+.DS_Store
+.vscode/
+.idea/

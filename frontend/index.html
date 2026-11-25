@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BKind — Making Social Spaces Peaceful Again</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Pixelify+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=18" />
+</head>
+
+<body>
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="bg-scrim" aria-hidden="true"></div>
+
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-name">BKind</span>
+      </div>
+    </header>
+
+    <main class="hero">
+      <h1 class="hero-title">Making the Internet<br />Peaceful Again.</h1>
+      <p class="hero-subtitle">
+        Paste a public Instagram post or Reel link below. BKind gently filters out
+        abuse and threats.
+      </p>
+
+      <form id="moderate-form" class="glass-form" novalidate>
+        <input id="post-url" class="glass-input" type="url" name="url" placeholder="https://www.instagram.com/reel/..."
+          aria-label="Instagram post or Reel URL" autocomplete="off" required />
+        <button id="submit-btn" class="glass-btn" type="submit">
+          <span id="btn-spinner" class="spinner hidden" aria-hidden="true"></span>
+          <span id="btn-label">Scan Comments</span>
+        </button>
+      </form>
+
+      <div id="live-activity" class="live-activity hidden" role="status" aria-live="polite">
+        <div class="live-head">
+          <span class="pulse-ring" aria-hidden="true"></span>
+          <span id="live-title" class="live-title">Scraping comments</span>
+          <span id="live-count" class="live-count hidden"></span>
+        </div>
+        <div class="live-body">
+          <span class="live-rail" aria-hidden="true"></span>
+          <p id="live-detail" class="live-detail">Opening Instagram post and reading comments...</p>
+        </div>
+      </div>
+
+      <p id="status-message" class="status-message hidden" role="alert"></p>
+
+      <section id="results-section" class="results hidden" aria-live="polite">
+        <div class="summary-row" role="tablist" aria-label="Comment categories">
+          <div class="glass-pill stat-pill stat-group">
+            <button type="button" class="tab-btn" data-tab="scraped" role="tab" aria-selected="false">
+              <span class="stat-label">Comments Scraped</span>
+              <strong id="stat-scraped">0</strong>
+            </button>
+            <button type="button" class="download-btn" data-download="scraped" title="Download scraped comments TXT"
+              aria-label="Download scraped comments TXT">
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 2.5v8" />
+                <path d="M4.75 7.5 8 10.75 11.25 7.5" />
+                <path d="M3 13.5h10" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="glass-pill stat-pill stat-good stat-group">
+            <button type="button" class="tab-btn" data-tab="good" role="tab" aria-selected="false">
+              <span class="stat-label">Good</span>
+              <strong id="stat-good">0</strong>
+            </button>
+            <button type="button" class="download-btn" data-download="good" title="Download good comments TXT"
+              aria-label="Download good comments TXT">
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 2.5v8" />
+                <path d="M4.75 7.5 8 10.75 11.25 7.5" />
+                <path d="M3 13.5h10" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="glass-pill stat-pill stat-bad stat-group active">
+            <button type="button" class="tab-btn" data-tab="flagged" role="tab" aria-selected="true">
+              <span class="stat-label">Flagged</span>
+              <strong id="stat-bad">0</strong>
+            </button>
+            <button type="button" class="download-btn" data-download="flagged" title="Download flagged comments TXT"
+              aria-label="Download flagged comments TXT">
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 2.5v8" />
+                <path d="M4.75 7.5 8 10.75 11.25 7.5" />
+                <path d="M3 13.5h10" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="comments-box" class="comments-box">
+          <div id="empty-state" class="glass-card empty-card hidden">
+            <p id="empty-title" class="empty-title">A calm thread.</p>
+            <p id="empty-desc" class="empty-desc">No abusive or threatening comments were found on this post.</p>
+          </div>
+
+          <div id="bad-list" class="bad-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js?v=8"></script>
+</body>
+
+</html>
