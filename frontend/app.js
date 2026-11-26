@@ -3,7 +3,7 @@ const IS_LOCAL_HOST =
   window.location.hostname === "127.0.0.1";
 const API_BASE =
   window.location.protocol === "file:" ||
-  (IS_LOCAL_HOST && window.location.port !== "8000")
+    (IS_LOCAL_HOST && window.location.port !== "8000")
     ? "http://127.0.0.1:8000"
     : "";
 
@@ -199,7 +199,7 @@ function renderActiveTabList() {
         head.appendChild(tagWrap);
       }
     }
-
+    // Jayesh's Code
     const commentBody = document.createElement("p");
     commentBody.className = "comment-text";
     commentBody.textContent = item.comment || "";
